@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.agents/
+.scratch/
+docs/
+AGENTS.md
+skills-lock.json
+*.tgz
