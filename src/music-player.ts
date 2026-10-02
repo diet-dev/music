@@ -49,10 +49,7 @@ export class MusicPlayer {
 
   constructor(options: MusicOptions) {
     this.tracks = options.tracks;
-    this.opt = {
-      ...musicDefaults,
-      ...options,
-    };
+    this.opt = { ...musicDefaults, ...options };
   }
 
   /**
@@ -270,11 +267,15 @@ export class MusicPlayer {
     this.applyGain();
 
     if (!this.ctx || !this.filter) return;
-    const { duckHz, openHz, ramp } = this.opt;
+    const { duckHz, openHz, slomoFilterHz: closedHz, minRate, ramp } = this.opt;
     const now: number = ctxNow(this.ctx);
+    // На снятии фильтр возвращается не в полный открытие, а в слоумо-позицию
+    // текущего темпа: иначе снятие паузы затирало бы приопущенный setRate()
+    // фильтр (при rate === 1 формула даёт openHz — поведение прежнее).
+    const target: number = on ? duckHz : slomoFilterHz(this.rate, minRate, openHz, closedHz);
     this.filter.frequency.cancelScheduledValues(now);
     this.filter.frequency.setValueAtTime(this.filter.frequency.value, now);
-    this.filter.frequency.linearRampToValueAtTime(on ? duckHz : openHz, now + ramp * 2);
+    this.filter.frequency.linearRampToValueAtTime(target, now + ramp * 2);
   }
 
   public setRate(rate: number): void {

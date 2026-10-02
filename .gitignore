@@ -1,8 +1,10 @@
 node_modules/
 dist/
+dist-demo/
 .agents/
 .scratch/
 docs/
 AGENTS.md
 skills-lock.json
 *.tgz
+.playwright-mcp/

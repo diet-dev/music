@@ -8,8 +8,11 @@
     "noEmit": true,
     "strict": true,
     "skipLibCheck": true,
-    "types": ["node"],
-    "forceConsistentCasingInFileNames": true
+    "types": ["node", "vite/client"],
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@dietdev/music": ["./src/index.ts"]
+    }
   },
-  "include": ["src/**/*.ts", "test/**/*.ts"]
+  "include": ["src/**/*.ts", "test/**/*.ts", "demo/**/*.ts"]
 }

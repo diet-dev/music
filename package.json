@@ -39,6 +39,9 @@
     "access": "public"
   },
   "scripts": {
+    "dev": "vite",
+    "build:demo": "vite build",
+    "preview": "vite preview",
     "test": "node --disable-warning=ExperimentalWarning --test \"test/*.test.ts\"",
     "test:watch": "node --disable-warning=ExperimentalWarning --test --watch \"test/*.test.ts\"",
     "typecheck": "tsc --noEmit",
@@ -51,6 +54,7 @@
   "devDependencies": {
     "@types/node": "^24.0.0",
     "prettier": "^3.9.6",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "^8.3.0"
   }
 }
