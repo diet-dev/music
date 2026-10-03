@@ -5,7 +5,7 @@ import { buildUI } from "./ui.ts";
 type TrackId = "menu" | "battle" | "boss";
 
 const player = new MusicPlayer({
-  tracks: { menu: "/menu.wav", battle: "/battle.wav", boss: "/boss.wav" },
+  tracks: { menu: "menu.wav", battle: "battle.wav", boss: "boss.wav" },
   onError: (err) => console.error(err),
 });
 
